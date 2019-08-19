@@ -37,11 +37,22 @@ public class ColdMealTest {
         assertEquals(numberColdMeals, result);
     }
 
+    @Test
+    public void count_cold_meals_should_return_2_when_list_of_date() {
+        int numberOfColdMeals = 2;
+
+        int result = countColdMeals(Arrays.asList(LocalDateTime.of(2019, 10, 17, 22, 00),
+                LocalDateTime.of(2019, 10, 17, 22, 30)));
+
+        assertEquals(numberOfColdMeals, result);
+    }
+
     private int countColdMeals(List<LocalDateTime> checkingDates) {
+        int countColdMeals = 0;
         for(LocalDateTime dateTime : checkingDates) {
             if (dateTime.isAfter(COLD_MEALS_START_TIME))
-                return 1;
+                countColdMeals++;
         }
-        return 0;
+        return countColdMeals;
     }
 }
