@@ -15,16 +15,16 @@ public class ColdMealTest {
         int numberOfColdMeals = 1;
 
         int result = countColdMeals(Arrays.asList(LocalDateTime.of(2019, 10, 17, 22, 00)));
-        
+
         assertEquals(numberOfColdMeals, result);
     }
 
     @Test
     public void count_cold_meals_should_return_0_when_date_is_before_nine() {
         int numberOfColdMeals = 0;
-        
+
         int result = countColdMeals(Arrays.asList(LocalDateTime.of(2019, 10, 17, 20, 00)));
-        
+
         assertEquals(numberOfColdMeals, result);
     }
 
@@ -47,10 +47,28 @@ public class ColdMealTest {
         assertEquals(numberOfColdMeals, result);
     }
 
+    @Test
+    public void count_cold_meals_should_return_0_when_list_of_date() {
+        int numberOfColdMeals = 0;
+
+        int result = countColdMeals(Arrays.asList(LocalDateTime.of(2019, 10, 17, 21, 00)));
+
+        assertEquals(numberOfColdMeals, result);
+    }
+
+    @Test
+    public void count_cold_meals_should_return_0_when_date_after_midnight() {
+        int numberOfColdMeals = 0;
+
+        int result = countColdMeals(Arrays.asList(LocalDateTime.of(2019, 10, 18, 00, 00)));
+
+        assertEquals(numberOfColdMeals, result);
+    }
+
     private int countColdMeals(List<LocalDateTime> checkingDates) {
         int countColdMeals = 0;
-        for(LocalDateTime dateTime : checkingDates) {
-            if (dateTime.isAfter(COLD_MEALS_START_TIME))
+        for (LocalDateTime dateTime : checkingDates) {
+            if (dateTime.isAfter(COLD_MEALS_START_TIME) && dateTime.isBefore(LocalDateTime.of(2019, 10, 18, 00, 00)))
                 countColdMeals++;
         }
         return countColdMeals;
