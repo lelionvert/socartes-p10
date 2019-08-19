@@ -37,9 +37,9 @@ public class ColdMealTest {
         assertEquals(numberColdMeals, result);
     }
 
-    private int countColdMeals(List<LocalDateTime> asList) {
-        for(LocalDateTime dateTime : asList) {
-            if (((LocalDateTime) asList.get(0)).isAfter(COLD_MEALS_START_TIME))
+    private int countColdMeals(List<LocalDateTime> checkingDates) {
+        for(LocalDateTime dateTime : checkingDates) {
+            if (dateTime.isAfter(COLD_MEALS_START_TIME))
                 return 1;
         }
         return 0;
