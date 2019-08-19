@@ -1,7 +1,15 @@
 public class ColdMeal {
 
-    public static boolean isSameDates(CheckinDates arrivalDate, CheckinDates referenceDate){
+    private CheckinDates conferenceDate;
 
-        return arrivalDate.isSameDate(referenceDate.date);
+    public ColdMeal(CheckinDates conferenceDate) {
+        this.conferenceDate = conferenceDate;
     }
+
+    public boolean needOneColdMeal(CheckinDates arrivalDate){
+
+        return arrivalDate.isSameDate(this.conferenceDate.date);
+    }
+
+
 }
