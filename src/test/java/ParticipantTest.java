@@ -1,22 +1,25 @@
-import org.junit.Assert;
 import org.junit.Test;
 import socrates.Participant.Participant;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
 
 public class ParticipantTest {
 
+    private LocalDateTime aDate(int hour) {
+        return LocalDateTime.of(2019, 10, 17, hour, 00);
+    }
+
     @Test
     public void check_participant_arrival_after_nine_should_return_true() {
-        Participant participant = new Participant(new Date(2019, 10, 17, 22, 00));
+        Participant participant = new Participant(aDate(22));
         assertTrue(participant.comeAfterNinePM());
     }
 
     @Test
     public void check_participant_arrival_before_nine_should_return_false() {
-        Participant participant = new Participant(new Date(2019, 10, 17, 20, 00));
+        Participant participant = new Participant(aDate(20));
         assertFalse(participant.comeAfterNinePM());
     }
 }
