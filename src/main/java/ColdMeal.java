@@ -5,6 +5,7 @@ import java.util.Date;
 public class ColdMeal {
 
     public static boolean isSameDates(LocalDate arrivalDate, LocalDate referenceDate){
-        return true;
+
+        return arrivalDate.equals(referenceDate);
     }
 }
