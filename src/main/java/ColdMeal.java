@@ -1,10 +1,9 @@
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 public class ColdMeal {
 
-    public static boolean isSameDates(LocalDate arrivalDate, LocalDate referenceDate){
+    public static boolean isSameDates(LocalDateTime arrivalDate, LocalDateTime referenceDate){
 
         return arrivalDate.equals(referenceDate);
     }
