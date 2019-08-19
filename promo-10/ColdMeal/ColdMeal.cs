@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ColdMeal
+namespace ColdMeals
 {
-    public class Class1
+    public class ColdMeal
     {
-        public static int Compute(in DateTime conferenceDate, List<DateTime> checkins)
+        public static int Compute(in DateTime conferenceDate, in List<DateTime> checkins)
         {
             return 0;
         }
