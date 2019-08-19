@@ -22,4 +22,11 @@ public class ParticipantTest {
         Participant participant = new Participant(aDate(20));
         assertFalse(participant.comeAfterNinePM());
     }
+
+    @Test
+    public void check_participant_arrival_after_midnight_should_return_false() {
+        LocalDateTime midnight = LocalDateTime.of(2019, 10, 18, 00, 00);
+        Participant participant = new Participant(midnight);
+        assertFalse(participant.comeAfterNinePM());
+    }
 }

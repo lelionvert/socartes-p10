@@ -13,7 +13,8 @@ public class Participant {
     }
 
     public boolean comeAfterNinePM() {
-        return this.dateArrival.isAfter(LIMIT_ARRIVAL_HOUR);
+        return this.dateArrival.isAfter(LIMIT_ARRIVAL_HOUR)
+                && this.dateArrival.isBefore(LocalDateTime.of(2019,10,18,00,00));
     }
 
 
