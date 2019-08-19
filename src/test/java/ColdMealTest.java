@@ -28,9 +28,20 @@ public class ColdMealTest {
         assertEquals(numberOfColdMeals, result);
     }
 
+    @Test
+    public void count_cold_meals_should_return_0_when_date_is_empty() {
+        int numberColdMeals = 0;
+
+        int result = countColdMeals(Arrays.asList());
+
+        assertEquals(numberColdMeals, result);
+    }
+
     private int countColdMeals(List<LocalDateTime> asList) {
-        if(((LocalDateTime)asList.get(0)).isAfter(COLD_MEALS_START_TIME))
-            return 1;
+        for(LocalDateTime dateTime : asList) {
+            if (((LocalDateTime) asList.get(0)).isAfter(COLD_MEALS_START_TIME))
+                return 1;
+        }
         return 0;
     }
 }
