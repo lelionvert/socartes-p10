@@ -9,14 +9,14 @@ import static org.junit.Assert.*;
 public class ParticipantTest {
 
     @Test
-    public void participant_should_have_checkin_date() {
-        assertNotNull(new Participant().getDate());
+    public void check_participant_arrival_after_nine_should_return_true() {
+        Participant participant = new Participant(new Date(2019, 10, 17, 22, 00));
+        assertTrue(participant.comeAfterNinePM());
     }
 
     @Test
-    public void check_participant_arrival_after_nine_should_return_true() {
-        Participant participant = new Participant();
-        participant.setDate(new Date(2019, 10, 10, 22, 00));
-        assertTrue(participant.comeAfterNinePM());
+    public void check_participant_arrival_before_nine_should_return_false() {
+        Participant participant = new Participant(new Date(2019, 10, 17, 20, 00));
+        assertFalse(participant.comeAfterNinePM());
     }
 }

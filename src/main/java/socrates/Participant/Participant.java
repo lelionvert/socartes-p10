@@ -4,15 +4,13 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Participant {
-    public Date getDate() {
-        return new Date();
-    }
+    private final Date dateArrival;
 
-    public Date setDate(Date date) {
-        return null;
+    public Participant(Date date) {
+        dateArrival = date;
     }
 
     public boolean comeAfterNinePM() {
-        return true;
+        return this.dateArrival.after(new Date(2019,10,17,21,00));
     }
 }
