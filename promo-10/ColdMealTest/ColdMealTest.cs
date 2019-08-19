@@ -8,24 +8,30 @@ namespace Tests
 {
     public class Tests
     {
-        [Test]
-        public void cold_meal_number_should_be_zero_when_no_checkin()
+        private ColdMeal coldMeal;
+
+        [SetUp]
+        public void setup()
         {
-            DateTime conferenceDate = new DateTime(2019, 10, 19);
+            coldMeal = new ColdMeal();
+        }
+        
+        [Test]
+        public void cold_meal_number_should_be_zero_given_no_checkin()
+        {
             List<DateTime> checkins = new List<DateTime>();
-            int coldMealNumber = ColdMeal.Compute(conferenceDate, checkins);
+            int coldMealNumber = coldMeal.Compute(checkins);
             coldMealNumber.Should().Be(0);
         }
         
         [Test]
-        public void cold_meal_number_should_be_one_when_late_checkin()
+        public void cold_meal_number_should_be_one_given_a_late_checkin()
         {
-            DateTime conferenceDate = new DateTime();
             List<DateTime> checkIns = new List<DateTime>
             {
                 new DateTime(2019,10,19,22,00,00)
             };
-            int coldMealNumber = ColdMeal.Compute(conferenceDate, checkIns);
+            int coldMealNumber = coldMeal.Compute(checkIns);
             coldMealNumber.Should().Be(1);
         }
     }

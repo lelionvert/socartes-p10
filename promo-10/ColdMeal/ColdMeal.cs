@@ -5,7 +5,7 @@ namespace ColdMeals
 {
     public class ColdMeal
     {
-        public static int Compute(in DateTime conferenceDate, in List<DateTime> checkins)
+        public int Compute(in List<DateTime> checkins)
         {
             return checkins.Count;
         }
