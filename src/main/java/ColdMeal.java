@@ -12,7 +12,10 @@ public class ColdMeal {
     }
 
 
-    public int count() {
+    public int count(CheckinDate checkinDate) {
+        if(checkinDate != null){
+            return 1;
+        }
         return 0;
     }
 }
