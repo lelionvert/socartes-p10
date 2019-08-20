@@ -1,4 +1,7 @@
+package socrates;
+
 import org.junit.Test;
+import socrates.ColdMeals;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
