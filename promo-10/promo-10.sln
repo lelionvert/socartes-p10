@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdMealTest", "ColdMealTest\ColdMealTest.csproj", "{0D905808-955F-4805-A7D8-2DEC1060D14B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdMeal", "ColdMeal\ColdMeal.csproj", "{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catering", "Catering\Catering.csproj", "{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

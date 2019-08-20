@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using ColdMeals;
+using Catering;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -9,21 +9,22 @@ namespace Tests
 {
     public class Tests
     {
+        private const int COLD_MEAL_START_TIME = 21;
         private ColdMeal coldMeal;
-        private static readonly DateTime CONFERENCE_START_DAY = new DateTime(2019, 10, 19);
+        private static readonly DateTime ConferenceStartDay = new DateTime(2019, 10, 19);
 
         [SetUp]
         public void setup()
         {
-            coldMeal = new ColdMeal();
+            coldMeal = new ColdMeal(ConferenceStartDay, COLD_MEAL_START_TIME);
         }
         
         [Test]
         public void cold_meal_amount_should_be_zero_given_no_checkin()
         {
             List<DateTime> checkins = new List<DateTime>();
-            int coldMealNumber = coldMeal.Count(checkins);
-            coldMealNumber.Should().Be(0);
+            int coldMealAmount = coldMeal.Count(checkins);
+            coldMealAmount.Should().Be(0);
         }
         
         [Test]
@@ -33,8 +34,8 @@ namespace Tests
             {
                 ConferenceStartDayCheckInOf(22)
             };
-            int coldMealNumber = coldMeal.Count(checkIns);
-            coldMealNumber.Should().Be(1);
+            int coldMealAmount = coldMeal.Count(checkIns);
+            coldMealAmount.Should().Be(1);
         }
 
         [Test]
@@ -44,8 +45,8 @@ namespace Tests
             {
                 ConferenceStartDayCheckInOf(17)
             };
-            int coldMealNumber = coldMeal.Count(checkIns);
-            coldMealNumber.Should().Be(0);
+            int coldMealAmount = coldMeal.Count(checkIns);
+            coldMealAmount.Should().Be(0);
         }
 
         [Test]
@@ -55,8 +56,8 @@ namespace Tests
             {
                 ConferenceStartDayCheckInOf(20)
             };
-            int coldMealNumber = coldMeal.Count(checkins);
-            coldMealNumber.Should().Be(0);
+            int coldMealAmount = coldMeal.Count(checkins);
+            coldMealAmount.Should().Be(0);
         }
 
         [Test]
@@ -67,8 +68,8 @@ namespace Tests
             {
                 dayFollowingConferenceStartingDay
             };
-            int coldMealNumber = coldMeal.Count(checkins);
-            coldMealNumber.Should().Be(0);
+            int coldMealAmount = coldMeal.Count(checkins);
+            coldMealAmount.Should().Be(0);
         }
 
         [Test]
@@ -79,24 +80,24 @@ namespace Tests
                 ConferenceStartDayCheckInOf(19),
                 ConferenceStartDayCheckInOf(23)
             };
-            int coldMealNumber = coldMeal.Count(checkins);
-            coldMealNumber.Should().Be(1);
+            int coldMealAmount = coldMeal.Count(checkins);
+            coldMealAmount.Should().Be(1);
         }
 
         [Test]
-        public void cold_meal_amout_should_be_zero_given_one_check_in_at_exactly_21()
+        public void cold_meal_amount_should_be_zero_given_one_check_in_at_exactly_cold_meal_start_time()
         {
-            IList<DateTime> checkins = new List<DateTime>()
+            IList<DateTime> checkIns = new List<DateTime>()
             {
-                ConferenceStartDayCheckInOf(21)
+                ConferenceStartDayCheckInOf(COLD_MEAL_START_TIME)
             };
-            int coldMealNumber = coldMeal.Count(checkins);
-            coldMealNumber.Should().Be(0);
+            int coldMealAmount = coldMeal.Count(checkIns);
+            coldMealAmount.Should().Be(0);
         }
 
         private static DateTime ConferenceStartDayCheckInOf(int hour)
         {
-            return CONFERENCE_START_DAY.AddHours(hour);
+            return ConferenceStartDay.AddHours(hour);
         }
     }
 }
