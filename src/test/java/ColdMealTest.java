@@ -22,4 +22,31 @@ public class ColdMealTest {
         assertTrue(coldMeal.needOneColdMeal(arrivalDate));
 
     }
+
+    @Test
+    public void when_arrival_date_and_hour_is_same_as_cold_meal_start_time_return_false() {
+        LocalTime beginHourForColdMeal = LocalTime.of(21, 0);
+        LocalDate dayOfColdMeal = LocalDate.of(2019, 10, 17);
+        CheckinDate timeLimitForColdMeal = new CheckinDate(dayOfColdMeal, beginHourForColdMeal);
+        ColdMeal coldMeal = new ColdMeal(timeLimitForColdMeal);
+
+        LocalDate arrivalDay = LocalDate.of(2019, 10, 17);
+        LocalTime arrivalHour = LocalTime.of(21, 0);
+        CheckinDate arrivalDate = new CheckinDate(arrivalDay, arrivalHour);
+        assertFalse(coldMeal.needOneColdMeal(arrivalDate));
+    }
+
+    @Test
+    public void when_arrival_date_and_hour_is_same_as_cold_meal_end_time_return_false() {
+        LocalTime beginHourForColdMeal = LocalTime.of(21, 0);
+        LocalDate dayOfColdMeal = LocalDate.of(2019, 10, 17);
+        CheckinDate timeLimitForColdMeal = new CheckinDate(dayOfColdMeal, beginHourForColdMeal);
+        ColdMeal coldMeal = new ColdMeal(timeLimitForColdMeal);
+
+        LocalDate arrivalDay = LocalDate.of(2019, 10, 18);
+        LocalTime arrivalHour = LocalTime.of(0, 0);
+        CheckinDate arrivalDate = new CheckinDate(arrivalDay, arrivalHour);
+
+        assertFalse(coldMeal.needOneColdMeal(arrivalDate));
+    }
 }
