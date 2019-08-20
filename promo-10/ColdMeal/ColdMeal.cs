@@ -13,6 +13,8 @@ namespace ColdMeals
             DateTime checkin = checkins.FirstOrDefault();
             if (checkin.Hour < COLD_MEAL_START_TIME)
                 return 0;
+            if (checkin.Date != new DateTime(2019, 10, 19))
+                return 0;
             return checkins.Count;
         }
     }
