@@ -83,6 +83,17 @@ namespace Tests
             coldMealNumber.Should().Be(1);
         }
 
+        [Test]
+        public void cold_meal_amout_should_be_zero_given_one_check_in_at_exactly_21()
+        {
+            IList<DateTime> checkins = new List<DateTime>()
+            {
+                ConferenceStartDayCheckInOf(21)
+            };
+            int coldMealNumber = coldMeal.Count(checkins);
+            coldMealNumber.Should().Be(0);
+        }
+
         private static DateTime ConferenceStartDayCheckInOf(int hour)
         {
             return CONFERENCE_START_DAY.AddHours(hour);

@@ -11,12 +11,13 @@ namespace ColdMeals
 
         public int Count(in IList<DateTime> checkins)
         {
-            return checkins.Count(currentCheckIn => IsColdMeal(currentCheckIn));
+            return checkins.Count(IsEligibleForColdMeal);
         }
 
-        private bool IsColdMeal(DateTime checkin)
+        private bool IsEligibleForColdMeal(DateTime checkin)
         {
-            return checkin.Date == conferenceStartDay && checkin.Hour >= COLD_MEAL_START_TIME;
+            return checkin.Date == conferenceStartDay
+                   && checkin.Hour > COLD_MEAL_START_TIME;
         }
     }
 }
