@@ -12,4 +12,7 @@ public class ColdMeal {
     }
 
 
+    public int count() {
+        return 0;
+    }
 }

@@ -3,6 +3,7 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -48,5 +49,17 @@ public class ColdMealTest {
         CheckinDate arrivalDate = new CheckinDate(arrivalDay, arrivalHour);
 
         assertFalse(coldMeal.needOneColdMeal(arrivalDate));
+    }
+
+    @Test
+    public void when_no_checking_then_dont_count_any_cold_meal() {
+        int expectedQuantityOfColdMeals = 0;
+
+        LocalTime beginHourForColdMeal = LocalTime.of(21,0);
+        LocalDate dayOfColdMeal = LocalDate.of(2019,10,17);
+        CheckinDate timeLimitForColdMeal = new CheckinDate(dayOfColdMeal, beginHourForColdMeal);
+        ColdMeal coldMeal = new ColdMeal(timeLimitForColdMeal);
+
+        assertEquals(expectedQuantityOfColdMeals, coldMeal.count());
     }
 }
