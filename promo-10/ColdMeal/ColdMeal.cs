@@ -11,10 +11,7 @@ namespace ColdMeals
 
         public int Count(in IList<DateTime> checkins)
         {
-            DateTime checkin = checkins.FirstOrDefault();
-            if (IsColdMeal(checkin))
-                return checkins.Count;
-            return 0;
+            return checkins.Count(currentCheckIn => IsColdMeal(currentCheckIn));
         }
 
         private bool IsColdMeal(DateTime checkin)
