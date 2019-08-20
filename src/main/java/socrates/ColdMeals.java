@@ -14,13 +14,10 @@ public class ColdMeals {
     }
 
     public int countColdMeals(List<CheckIn> checkingDates) {
-        int countColdMeals = 0;
-        for (CheckIn dateTime : checkingDates) {
-            if (dateTime.isBetween(coldMealsStartTime)) {
-                countColdMeals++;
-            }
-        }
-        return countColdMeals;
+        return (int) checkingDates.stream()
+                .filter(checkIn -> checkIn.isSameDayAndAfter(coldMealsStartTime))
+                .count();
     }
+
 
 }

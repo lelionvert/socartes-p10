@@ -10,10 +10,10 @@ public class CheckIn {
         this.checkInDateTime = checkInDateTime;
     }
 
-    boolean isBetween(LocalDateTime coldMealsStartTime) {
-        boolean isSameDay = checkInDateTime.getDayOfMonth() == coldMealsStartTime.getDayOfMonth();
+    boolean isSameDayAndAfter(LocalDateTime startTime) {
+        boolean isSameDay = checkInDateTime.getDayOfMonth() == startTime.getDayOfMonth();
 
-        return checkInDateTime.isAfter(coldMealsStartTime) &&
+        return checkInDateTime.isAfter(startTime) &&
                 isSameDay;
     }
 }
