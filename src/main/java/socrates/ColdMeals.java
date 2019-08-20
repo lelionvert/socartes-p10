@@ -15,9 +15,7 @@ public class ColdMeals {
 
     public int countColdMeals(List<CheckIn> checkingDates) {
         return (int) checkingDates.stream()
-                .filter(checkIn -> checkIn.isSameDayAndAfter(coldMealsStartTime))
+                .filter(checkIn -> checkIn.isWithinColdMealTime(coldMealsStartTime))
                 .count();
     }
-
-
 }

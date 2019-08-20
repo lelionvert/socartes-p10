@@ -10,7 +10,7 @@ public class CheckIn {
         this.checkInDateTime = checkInDateTime;
     }
 
-    boolean isSameDayAndAfter(LocalDateTime startTime) {
+    boolean isWithinColdMealTime(LocalDateTime startTime) {
         boolean isSameDay = checkInDateTime.getDayOfMonth() == startTime.getDayOfMonth();
 
         return checkInDateTime.isAfter(startTime) &&
