@@ -1,12 +1,11 @@
 package socrates;
 
 import org.junit.Test;
-import socrates.ColdMeals;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static java.time.LocalDateTime.of;
 import static org.junit.Assert.assertEquals;
 
 public class ColdMealTest {
@@ -68,7 +67,7 @@ public class ColdMealTest {
         assertEquals(expectedNumberOfColdMeals, result);
     }
 
-    private static LocalDateTime aDate(int day, int hour, int minute) {
-        return LocalDateTime.of(2019, 10, day, hour, minute);
+    private static CheckIn aDate(int day, int hour, int minute) {
+        return new CheckIn(of(2019, 10, day, hour, minute));
     }
 }

@@ -13,17 +13,14 @@ public class ColdMeals {
         coldMealsStartTime = of(2019, 10, 17, 21, 0);
     }
 
-    public int countColdMeals(List<LocalDateTime> checkingDates) {
+    public int countColdMeals(List<CheckIn> checkingDates) {
         int countColdMeals = 0;
-        for (LocalDateTime dateTime : checkingDates) {
-            if (isColdMealTime(dateTime)) {
+        for (CheckIn dateTime : checkingDates) {
+            if (dateTime.isBetween(coldMealsStartTime)) {
                 countColdMeals++;
             }
         }
         return countColdMeals;
     }
 
-    private boolean isColdMealTime(LocalDateTime dateTime) {
-        return dateTime.isAfter(coldMealsStartTime) && dateTime.isBefore(coldMealsStartTime.plusHours(3));
-    }
 }
