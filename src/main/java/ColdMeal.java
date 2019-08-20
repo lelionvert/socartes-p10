@@ -8,7 +8,7 @@ public class ColdMeal {
 
     public boolean needOneColdMeal(CheckinDate arrivalDate){
 
-        return conferenceDate.isInColdMealTime(arrivalDate);
+        return arrivalDate.isInColdMealTime(conferenceDate);
     }
 
 

@@ -7,21 +7,17 @@ public class CheckinDate {
     private LocalDate date;
     private LocalTime hour;
 
-    public CheckinDate(LocalDate date) {
-        this.date = date;
-    }
-
     public CheckinDate(LocalDate date, LocalTime hour) {
         this.date = date;
         this.hour = hour;
     }
 
-    public boolean isSameDate(CheckinDate otherDate){
+    private boolean isSameDate(CheckinDate otherDate){
         return this.equals(otherDate);
     }
 
-    public boolean isInColdMealTime(CheckinDate otherDate){
-        return isSameDate(otherDate) && this.hour.isBefore(otherDate.hour);
+    public boolean isInColdMealTime(CheckinDate coldMealStartTime){
+        return this.isSameDate(coldMealStartTime) && this.hour.isAfter(coldMealStartTime.hour);
     }
 
     @Override
