@@ -10,6 +10,7 @@ namespace Tests
     public class Tests
     {
         private ColdMeal coldMeal;
+        private static readonly DateTime CONFERENCE_START_DAY = new DateTime(2019, 10, 19);
 
         [SetUp]
         public void setup()
@@ -61,9 +62,10 @@ namespace Tests
         [Test]
         public void cold_meal_amount_should_be_zero_given_a_check_in_after_conference_start_day()
         {
+            var dayFollowingConferenceStartingDay = ConferenceStartDayCheckInOf(1).AddDays(1);
             IList<DateTime> checkins = new List<DateTime>
             {
-                ConferenceStartDayCheckInOf(22).AddDays(1)
+                dayFollowingConferenceStartingDay
             };
             int coldMealNumber = coldMeal.Count(checkins);
             coldMealNumber.Should().Be(0);
@@ -71,7 +73,7 @@ namespace Tests
 
         private static DateTime ConferenceStartDayCheckInOf(int hour)
         {
-            return new DateTime(2019, 10, 19, hour,0,0);
+            return CONFERENCE_START_DAY.AddHours(hour);
         }
     }
 }
