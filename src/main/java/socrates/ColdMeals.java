@@ -5,6 +5,12 @@ import java.util.List;
 
 class ColdMeals {
 
+    private final LocalDateTime coldMealsStartTime;
+
+    public ColdMeals() {
+        coldMealsStartTime = LocalDateTime.of(2019, 10, 17, 21, 0);
+    }
+
     int countColdMeals(List<LocalDateTime> checkingDates) {
         int countColdMeals = 0;
         for (LocalDateTime dateTime : checkingDates) {
@@ -16,7 +22,6 @@ class ColdMeals {
     }
 
     private boolean isColdMealTime(LocalDateTime dateTime) {
-        LocalDateTime startTime = LocalDateTime.of(2019, 10, 17, 21, 0);
-        return dateTime.isAfter(startTime) && dateTime.isBefore(startTime.plusHours(3));
+        return dateTime.isAfter(coldMealsStartTime) && dateTime.isBefore(coldMealsStartTime.plusHours(3));
     }
 }
