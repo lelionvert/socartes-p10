@@ -1,14 +1,14 @@
 public class ColdMeal {
 
-    private CheckinDates conferenceDate;
+    private CheckinDate conferenceDate;
 
-    public ColdMeal(CheckinDates conferenceDate) {
+    public ColdMeal(CheckinDate conferenceDate) {
         this.conferenceDate = conferenceDate;
     }
 
-    public boolean needOneColdMeal(CheckinDates arrivalDate){
+    public boolean needOneColdMeal(CheckinDate arrivalDate){
 
-        return (this.conferenceDate.isSameDate(arrivalDate.date) && this.conferenceDate.hour.isBefore(arrivalDate.hour));
+        return conferenceDate.isInColdMealTime(arrivalDate);
     }
 
 
