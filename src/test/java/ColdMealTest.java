@@ -2,6 +2,9 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -48,7 +51,29 @@ public class ColdMealTest {
         ColdMeal coldMeal = setUpColdMeal();
         CheckinDate checkinDate = new CheckinDate(LocalDate.of(2019, 10, 17),LocalTime.of(22,0));
 
-        assertEquals(expectedQuantityOfColdMeal, coldMeal.count(checkinDate));
+        assertEquals(expectedQuantityOfColdMeal, coldMeal.count(Collections.singletonList(checkinDate)));
+    }
+
+    @Test
+    public void when_two_checkin_in_cold_meal_range_then_count_two_cold_meals() {
+        int expectedQuantityOfColdMeals = 2;
+        ColdMeal coldMeal = setUpColdMeal();
+        List<CheckinDate> checkinDates = new ArrayList<>();
+        checkinDates.add(setUpCheckin(2019,10,17,22,0));
+        checkinDates.add(setUpCheckin(2019,10,17,23,0));
+
+        assertEquals(expectedQuantityOfColdMeals, coldMeal.count(checkinDates));
+    }
+
+    @Test
+    public void when_one_checkin_in_range_and_another_one_out_of_range_the_count_one_cold_meal() {
+        int expectedQuantityOfColdMeals = 1;
+        ColdMeal coldMeal = setUpColdMeal();
+        List<CheckinDate> checkinDates = new ArrayList<>();
+        checkinDates.add(setUpCheckin(2019,10,17,20,0));
+        checkinDates.add(setUpCheckin(2019, 10, 17, 22, 0));
+
+        assertEquals(expectedQuantityOfColdMeals, coldMeal.count(checkinDates));
     }
 
     private ColdMeal setUpColdMeal() {
