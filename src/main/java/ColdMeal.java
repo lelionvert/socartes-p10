@@ -8,7 +8,7 @@ public class ColdMeal {
 
     public boolean needOneColdMeal(CheckinDates arrivalDate){
 
-        return arrivalDate.isSameDate(this.conferenceDate.date);
+        return (this.conferenceDate.isSameDate(arrivalDate.date) && this.conferenceDate.hour.isBefore(arrivalDate.hour));
     }
 
 
