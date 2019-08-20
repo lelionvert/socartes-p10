@@ -1,20 +1,19 @@
 import socrates.CheckIn;
+import socrates.CheckIns;
 import socrates.ColdMeals;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.time.LocalDateTime.*;
 
 public class Main {
     public static void main(String[] args) {
-        ColdMeals coldMeals = new ColdMeals();
-        List<CheckIn> checkins = new ArrayList<>();
-        checkins.add(checkInOf(17, 20));
-        checkins.add(checkInOf(17, 22));
-        checkins.add(checkInOf(18, 0));
-        checkins.add(checkInOf(17, 21));
-        int resultColdMeals = coldMeals.countColdMeals(checkins);
+        ColdMeals coldMeals = new ColdMeals(of(2019, 10, 17, 21, 0));
+        CheckIns checkins = new CheckIns();
+        checkins.addCheckin(checkInOf(17, 20));
+        checkins.addCheckin(checkInOf(17, 22));
+        checkins.addCheckin(checkInOf(18, 0));
+        checkins.addCheckin(checkInOf(17, 21));
+        checkins.addCheckin(null);
+        int resultColdMeals = coldMeals.count(checkins);
 
         System.out.println("Nombre de repas froid: " + resultColdMeals);
     }

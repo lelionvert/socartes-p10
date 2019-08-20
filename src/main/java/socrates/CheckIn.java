@@ -13,7 +13,6 @@ public class CheckIn {
     boolean isWithinColdMealTime(LocalDateTime startTime) {
         boolean isSameDay = checkInDateTime.getDayOfMonth() == startTime.getDayOfMonth();
 
-        return checkInDateTime.isAfter(startTime) &&
-                isSameDay;
+        return isSameDay && checkInDateTime.isAfter(startTime);
     }
 }
