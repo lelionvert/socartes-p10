@@ -9,7 +9,7 @@ namespace ColdMeals
         public int Compute(in IList<DateTime> checkins)
         {
             DateTime checkin = checkins.FirstOrDefault();
-            if (checkin.Hour == 17)
+            if (checkin.Hour < 21)
                 return 0;
             return checkins.Count;
         }

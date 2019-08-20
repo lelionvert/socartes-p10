@@ -46,5 +46,16 @@ namespace Tests
             int coldMealNumber = coldMeal.Compute(checkIns);
             coldMealNumber.Should().Be(0);
         }
+
+        [Test]
+        public void cold_meal_number_should_be_zero_given_an_early_check_in_triangulation()
+        {
+            IList<DateTime> checkins = new List<DateTime>
+            {
+                new DateTime(2019, 10, 19, 20,0,0 )
+            };
+            int coldMealNumber = coldMeal.Compute(checkins);
+            coldMealNumber.Should().Be(0);
+        }
     }
 }
