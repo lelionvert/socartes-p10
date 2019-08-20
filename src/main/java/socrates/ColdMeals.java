@@ -10,9 +10,9 @@ public class ColdMeals {
         this.coldMealsStartTime = coldMealsStartTime;
     }
 
-    public int count(CheckIns checkingDates) {
-        if(checkingDates == null)
+    public int count(CheckIns checkinDates) {
+        if(checkinDates == null)
             return 0;
-        return checkingDates.count(coldMealsStartTime);
+        return checkinDates.isSameDayAndAfter(coldMealsStartTime);
     }
 }

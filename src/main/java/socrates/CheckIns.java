@@ -3,21 +3,19 @@ package socrates;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class CheckIns {
-    private List<CheckIn> checkingDates = new ArrayList<>();
+    private final List<CheckIn> checkingDates = new ArrayList<>();
 
-    public void addCheckin(CheckIn checkIn){
-        if(checkIn != null ){
+    public void addCheckin(CheckIn checkIn) {
+        if (checkIn != null) {
             checkingDates.add(checkIn);
         }
     }
 
-    public int count(LocalDateTime coldMealsStartTime) {
+    int isSameDayAndAfter(LocalDateTime startTime) {
         return (int) checkingDates.stream()
-                .filter(Objects::nonNull)
-                .filter(checkIn -> checkIn.isWithinColdMealTime(coldMealsStartTime))
+                .filter(checkIn -> checkIn.isSameDayAndAfter(startTime))
                 .count();
     }
 }
