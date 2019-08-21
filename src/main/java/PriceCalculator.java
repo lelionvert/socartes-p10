@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class PriceCalculator {
 
     private static final int SINGLE_ROOM_FULL_PRICE = 610;
@@ -5,7 +7,10 @@ public class PriceCalculator {
     private static final int TRIPLE_ROOM_FULL_PRICE = 410;
     private static final int NO_ACCOMMODATION_FULL_PRICE = 240;
 
-    public static int computePrice(RoomType roomType) {
+    public PriceCalculator(int mealPrice, CheckinDate confStart, CheckinDate confEnd,
+                           Map<RoomType, Integer> roomTypePrices) {}
+
+    public static int computePrice(RoomType roomType, CheckinDate checkInDate, CheckinDate checkOutDate) {
         if(RoomType.DOUBLE.equals(roomType))
             return DOUBLE_ROOM_FULL_PRICE;
         if(RoomType.TRIPLE.equals(roomType))
