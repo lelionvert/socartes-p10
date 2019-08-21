@@ -23,5 +23,10 @@ public class PriceCalculatorTest {
         assertEquals(expectedPrice, calculatedPrice);
     }
 
-
+    @Test
+    public void when_book_double_room_then_return_double_room_price() {
+        int calculatedPrice = PriceCalculator.compute("double");
+        int expectedPrice = 510;
+        assertEquals(expectedPrice, calculatedPrice);
+    }
 }
