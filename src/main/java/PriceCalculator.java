@@ -6,6 +6,10 @@ public class PriceCalculator {
     public static int compute(String roomType) {
         if("double".equals(roomType))
             return DOUBLE_ROOM_FULL_PRICE;
+        if("triple".equals(roomType))
+            return 410;
+        if("no accommodation".equals(roomType))
+            return 240;
         return SINGLE_ROOM_FULL_PRICE;
     }
 }
