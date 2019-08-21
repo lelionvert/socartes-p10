@@ -4,7 +4,7 @@ namespace Socrates
 {
     public class Registration
     {
-        public static int Price(in DateTime checkin, in DateTime checkout)
+        public static int Price()
         {
             return 610;
         }
