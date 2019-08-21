@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Catering
+namespace Socrates
 {
     public class ColdMeal
     {

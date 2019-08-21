@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Catering\Catering.csproj" />
+      <ProjectReference Include="..\Socrates\Socrates.csproj" />
     </ItemGroup>
 
 </Project>

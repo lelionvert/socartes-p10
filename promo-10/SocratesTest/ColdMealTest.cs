@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using Catering;
 using FluentAssertions;
 using NUnit.Framework;
+using Socrates;
 
-namespace Tests
+namespace SocratesTest
 {
-    public class Tests
+    public class ColdMealTests
     {
         private const int COLD_MEAL_START_TIME = 21;
         private ColdMeal coldMeal;

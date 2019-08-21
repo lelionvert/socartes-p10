@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColdMealTest", "ColdMealTest\ColdMealTest.csproj", "{0D905808-955F-4805-A7D8-2DEC1060D14B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Socrates", "Socrates\Socrates.csproj", "{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catering", "Catering\Catering.csproj", "{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationTest", "RegistrationTest\RegistrationTest.csproj", "{C2E09526-9DFF-4BEB-B5BB-085A463708BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocratesTest", "SocratesTest\SocratesTest.csproj", "{4721794A-E22D-46B5-9615-EBF1C0226267}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,17 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D905808-955F-4805-A7D8-2DEC1060D14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D905808-955F-4805-A7D8-2DEC1060D14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D905808-955F-4805-A7D8-2DEC1060D14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D905808-955F-4805-A7D8-2DEC1060D14B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41B8810A-EA7C-4E00-BD7C-F3D53F818F67}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2E09526-9DFF-4BEB-B5BB-085A463708BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2E09526-9DFF-4BEB-B5BB-085A463708BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2E09526-9DFF-4BEB-B5BB-085A463708BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2E09526-9DFF-4BEB-B5BB-085A463708BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4721794A-E22D-46B5-9615-EBF1C0226267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4721794A-E22D-46B5-9615-EBF1C0226267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4721794A-E22D-46B5-9615-EBF1C0226267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4721794A-E22D-46B5-9615-EBF1C0226267}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
