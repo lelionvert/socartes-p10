@@ -105,6 +105,12 @@ public class RegistrationPriceCalculatorTest {
     }
 
 
+    @Test
+    public void given_single_room_with_full_stay_then_single_room_full_price() {
+        int expectedPrice = 610;
+        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(0, null, null);
+        assertEquals(expectedPrice, registrationPriceCalculator.computePrice(RoomType.SINGLE, null));
+    }
 
     private EnumMap<RoomType, Integer> initializeRoomTypePrice() {
         EnumMap<RoomType, Integer> roomTypePrices = new EnumMap(RoomType.class);

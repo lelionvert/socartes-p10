@@ -8,6 +8,6 @@ public class RegistrationPriceCalculator {
     }
 
     public int computePrice(RoomType roomType, Stay participantStay) {
-        return 0;
+        return 610;
     }
 }
