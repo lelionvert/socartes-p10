@@ -3,13 +3,13 @@ import java.util.Map;
 public class RegistrationPriceCalculator {
 
 
-    public RegistrationPriceCalculator(int mealPrice, Stay conferenceFullStay, Map<RoomType, Integer> roomTypePrices) {
+    private Map<RoomType, Integer> roomTypePrices;
 
+    public RegistrationPriceCalculator(int mealPrice, Stay conferenceFullStay, Map<RoomType, Integer> roomTypePrices) {
+        this.roomTypePrices = roomTypePrices;
     }
 
     public int computePrice(RoomType roomType, Stay participantStay) {
-        if(RoomType.DOUBLE.equals(roomType))
-            return 510;
-        return 610;
+        return roomTypePrices.get(roomType);
     }
 }

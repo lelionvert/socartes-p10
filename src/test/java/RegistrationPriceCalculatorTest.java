@@ -9,8 +9,9 @@ import static org.junit.Assert.assertEquals;
 public class RegistrationPriceCalculatorTest {
 
 
-    public static final int MEAL_PRICE = 40;
-    public static final int SINGLE_ROOM_PRICE = 610;
+    private static final int MEAL_PRICE = 40;
+    private static final int SINGLE_ROOM_PRICE = 610;
+    private static final int DOUBLE_ROOM_PRICE = 510;
 
     @Test
     public void acceptance_test_single_room_with_full_stay() {
@@ -29,11 +30,9 @@ public class RegistrationPriceCalculatorTest {
         Stay participantStay = new Stay(participantArrival, participantDeparture);
 
 
-        int expectedPrice = SINGLE_ROOM_PRICE;
-
         int calculatedPrice = registrationPriceCalculator.computePrice(RoomType.SINGLE, participantStay);
 
-        assertEquals(expectedPrice, calculatedPrice);
+        assertEquals(SINGLE_ROOM_PRICE, calculatedPrice);
     }
 
     @Test
@@ -53,7 +52,7 @@ public class RegistrationPriceCalculatorTest {
         Stay participantStay = new Stay(participantArrival, participantDeparture);
 
 
-        int expectedPrice = 510 - MEAL_PRICE;
+        int expectedPrice = DOUBLE_ROOM_PRICE - MEAL_PRICE;
 
         int calculatedPrice = registrationPriceCalculator.computePrice(RoomType.DOUBLE, participantStay);
 
@@ -108,26 +107,34 @@ public class RegistrationPriceCalculatorTest {
 
     @Test
     public void given_single_room_with_full_stay_then_single_room_full_price() {
-        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(0, null, null);
+        RegistrationPriceCalculator registrationPriceCalculator =
+                new RegistrationPriceCalculator(0,
+                        null, initializeRoomTypePrice());
 
-        int calculatedRoomPrice = registrationPriceCalculator.computePrice(RoomType.SINGLE, null);
+        int calculatedRoomPrice =
+                registrationPriceCalculator.computePrice(
+                        RoomType.SINGLE, null);
 
         assertEquals(SINGLE_ROOM_PRICE, calculatedRoomPrice);
     }
 
     @Test
     public void given_double_room_with_full_stay_then_double_room_full_price() {
-        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(0,null, null);
+        RegistrationPriceCalculator registrationPriceCalculator =
+                new RegistrationPriceCalculator(0,
+                        null, initializeRoomTypePrice());
 
-        int calculatedRoomPrice = registrationPriceCalculator.computePrice(RoomType.DOUBLE, null);
+        int calculatedRoomPrice =
+                registrationPriceCalculator.computePrice(
+                        RoomType.DOUBLE, null);
 
-        assertEquals(510, calculatedRoomPrice);
+        assertEquals(DOUBLE_ROOM_PRICE, calculatedRoomPrice);
     }
 
     private EnumMap<RoomType, Integer> initializeRoomTypePrice() {
-        EnumMap<RoomType, Integer> roomTypePrices = new EnumMap(RoomType.class);
+        EnumMap<RoomType, Integer> roomTypePrices = new EnumMap<>(RoomType.class);
         roomTypePrices.put(RoomType.SINGLE, SINGLE_ROOM_PRICE);
-        roomTypePrices.put(RoomType.DOUBLE, 510);
+        roomTypePrices.put(RoomType.DOUBLE, DOUBLE_ROOM_PRICE);
         roomTypePrices.put(RoomType.TRIPLE, 410);
         roomTypePrices.put(RoomType.NO_ACCOMMODATION, 240);
 
