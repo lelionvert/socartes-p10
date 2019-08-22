@@ -115,6 +115,15 @@ public class RegistrationPriceCalculatorTest {
         assertEquals(SINGLE_ROOM_PRICE, calculatedRoomPrice);
     }
 
+    @Test
+    public void given_double_room_with_full_stay_then_double_room_full_price() {
+        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(0,null, null);
+
+        int calculatedRoomPrice = registrationPriceCalculator.computePrice(RoomType.DOUBLE, null);
+
+        assertEquals(510, calculatedRoomPrice);
+    }
+
     private EnumMap<RoomType, Integer> initializeRoomTypePrice() {
         EnumMap<RoomType, Integer> roomTypePrices = new EnumMap(RoomType.class);
         roomTypePrices.put(RoomType.SINGLE, SINGLE_ROOM_PRICE);

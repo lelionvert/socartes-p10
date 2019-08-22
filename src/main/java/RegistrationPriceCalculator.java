@@ -8,6 +8,8 @@ public class RegistrationPriceCalculator {
     }
 
     public int computePrice(RoomType roomType, Stay participantStay) {
+        if(RoomType.DOUBLE.equals(roomType))
+            return 510;
         return 610;
     }
 }
