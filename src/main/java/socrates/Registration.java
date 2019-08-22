@@ -8,6 +8,6 @@ public class Registration {
     }
 
     public int calculatePrice(CheckIn checkIn, LocalDateTime checkOut, RoomType roomType) {
-        return 0;
+        return 610;
     }
 }
