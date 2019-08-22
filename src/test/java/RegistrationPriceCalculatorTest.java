@@ -35,6 +35,77 @@ public class RegistrationPriceCalculatorTest {
         assertEquals(expectedPrice, calculatedPrice);
     }
 
+    @Test
+    public void acceptance_test_double_room_late_checkin() {
+
+        Map<RoomType, Integer> roomTypePrices = initializeRoomTypePrice();
+
+        LocalDateTime conferenceStart = LocalDateTime.of(2019, 10, 17, 0, 0);
+        LocalDateTime conferenceEnd = LocalDateTime.of(2019, 10, 20, 14, 0);
+        Stay conferenceFullStay = new Stay(conferenceStart, conferenceEnd);
+
+        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(
+                MEAL_PRICE, conferenceFullStay, roomTypePrices);
+
+        LocalDateTime participantArrival = LocalDateTime.of(2019, 10, 18, 11, 0);
+        LocalDateTime participantDeparture = LocalDateTime.of(2019, 10, 20, 16, 0);
+        Stay participantStay = new Stay(participantArrival, participantDeparture);
+
+
+        int expectedPrice = 510 - MEAL_PRICE;
+
+        int calculatedPrice = registrationPriceCalculator.computePrice(RoomType.DOUBLE, participantStay);
+
+        assertEquals(expectedPrice, calculatedPrice);
+    }
+
+    @Test
+    public void acceptance_test_triple_room_early_checkout() {
+
+        Map<RoomType, Integer> roomTypePrices = initializeRoomTypePrice();
+
+        LocalDateTime conferenceStart = LocalDateTime.of(2019, 10, 17, 0, 0);
+        LocalDateTime conferenceEnd = LocalDateTime.of(2019, 10, 20, 14, 0);
+        Stay conferenceFullStay = new Stay(conferenceStart, conferenceEnd);
+
+        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(
+                MEAL_PRICE, conferenceFullStay, roomTypePrices);
+
+        LocalDateTime participantArrival = LocalDateTime.of(2019, 10, 17, 19, 0);
+        LocalDateTime participantDeparture = LocalDateTime.of(2019, 10, 20, 11, 0);
+        Stay participantStay = new Stay(participantArrival, participantDeparture);
+
+        int expectedPrice = 410 - MEAL_PRICE;
+
+        int calculatedPrice = registrationPriceCalculator.computePrice(RoomType.TRIPLE, participantStay);
+
+        assertEquals(expectedPrice, calculatedPrice);
+    }
+    @Test
+    public void acceptance_test_no_accommodation_with_short_stay() {
+
+        Map<RoomType, Integer> roomTypePrices = initializeRoomTypePrice();
+
+        LocalDateTime conferenceStart = LocalDateTime.of(2019, 10, 17, 0, 0);
+        LocalDateTime conferenceEnd = LocalDateTime.of(2019, 10, 20, 14, 0);
+        Stay conferenceFullStay = new Stay(conferenceStart, conferenceEnd);
+
+        RegistrationPriceCalculator registrationPriceCalculator = new RegistrationPriceCalculator(
+                MEAL_PRICE, conferenceFullStay, roomTypePrices);
+
+        LocalDateTime participantArrival = LocalDateTime.of(2019, 10, 18, 10, 0);
+        LocalDateTime participantDeparture = LocalDateTime.of(2019, 10, 19, 22, 0);
+        Stay participantStay = new Stay(participantArrival, participantDeparture);
+
+        int expectedPrice = 240 - MEAL_PRICE * 2;
+
+        int calculatedPrice = registrationPriceCalculator.computePrice(RoomType.NO_ACCOMMODATION, participantStay);
+
+        assertEquals(expectedPrice, calculatedPrice);
+    }
+
+
+
     private EnumMap<RoomType, Integer> initializeRoomTypePrice() {
         EnumMap<RoomType, Integer> roomTypePrices = new EnumMap(RoomType.class);
         roomTypePrices.put(RoomType.SINGLE, 610);
