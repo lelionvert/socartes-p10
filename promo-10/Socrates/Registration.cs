@@ -11,7 +11,7 @@ namespace Socrates
 
         public int Price(RoomType roomType, CheckIn checkIn, CheckOut checkOut)
         {
-            throw new NotImplementedException();
+            return 610;
         }
     }
 }
