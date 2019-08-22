@@ -6,21 +6,13 @@ namespace SocratesTest
 {
     public class RegistrationTest
     {
-        [Test]
-        public void full_price_of_single_room_choice()
+        [TestCase(610, RoomType.Single)]
+        [TestCase(510, RoomType.Double)]
+        [TestCase(410, RoomType.Triple)]
+        public void full_price_of_single_room_choice(int completePrice, RoomType roomType)
         {
-            int completePrice = 610;
             int price = new Registration(0, null, default, default)
-                .Price(RoomType.Single, default, default);
-            price.Should().Be(completePrice);
-        }
-
-        [Test]
-        public void full_price_of_double_room_choice()
-        {
-            int completePrice = 510;
-            int price = new Registration(0, null, default, default)
-                .Price(RoomType.Double, default,default);
+                .Price(roomType, default, default);
             price.Should().Be(completePrice);
         }
     }

@@ -11,6 +11,10 @@ namespace Socrates
 
         public int Price(RoomType roomType, CheckIn checkIn, CheckOut checkOut)
         {
+            if (roomType == RoomType.Triple)
+            {
+                return 410;
+            }
             if (roomType == RoomType.Double)
             {
                 return 510;
